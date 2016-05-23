@@ -25,17 +25,20 @@ var currentMisses = new PIXI.Text("");
 var currentScore = new PIXI.Text("");
 
 //target for tween
-var target = new PIXI.Sprite(PIXI.Texture.fromImage("laser1.png"));
+var target = new PIXI.Sprite(PIXI.Texture.fromImage("assets/laser1.png"));
 
 //main menu sprites
-var playButton = new PIXI.Sprite(PIXI.Texture.fromImage("planet5.png"));
-var menuBack = new PIXI.Sprite(PIXI.Texture.fromImage("spacebackground.png"));
+var playButton = new PIXI.Sprite(PIXI.Texture.fromImage("assets/planet5.png"));
+var menuBack = new PIXI.Sprite(PIXI.Texture.fromImage("assets/spacebackground.png"));
 	
 //game sprites
-var gameBack = new PIXI.Sprite(PIXI.Texture.fromImage("spacebackground.png"));
-var planetSprite = new PIXI.Sprite(PIXI.Texture.fromImage("planet1.png"));
-var playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromImage("player1.png"));
-var playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromImage("player2.png"));
+var gameBack = new PIXI.Sprite(PIXI.Texture.fromImage("assets/spacebackground.png"));
+var planetSprite = new PIXI.Sprite(PIXI.Texture.fromImage("assets/planet1.png"));
+var playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player1.png"));
+var playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player2.png"));
+
+//laser texture
+var laserTexture = new PIXI.Texture.fromImage("assets/laser2.png");
 
 var mainMenu = function () {
 	stage.addChild(menuContainer);
@@ -124,7 +127,7 @@ function move() {
 }
 
 function playerShoot() {
-	newLaser = new PIXI.Sprite(PIXI.Texture.fromImage("laser2.png"));
+	newLaser = new PIXI.Sprite(laserTexture);
 	newLaser.anchor.x = 0.5;
 	newLaser.anchor.y = 0.5;
 	newLaser.position = playerSprite1.toGlobal(gameContainer.position);
