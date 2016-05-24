@@ -7,6 +7,7 @@ var stage = new PIXI.Container();
 var gameContainer = new PIXI.Container();
 var menuContainer = new PIXI.Container();
 var endContainer = new PIXI.Container();
+var instructionsContainer = new PIXI.Container();
 var playerContainer = new PIXI.Container();
 var laserContainer = new PIXI.Container();
 var rockContainer = new PIXI.Container();
@@ -16,10 +17,31 @@ var style = {fill: "white"};
 var style2 = {font: '16px Arial', fill: "white", workWrap: true};
 var scoreDisplay = new PIXI.Text("", style);
 var creditsDisplay = new PIXI.Text("By: Matthew Siewierski", style);
-
 var instructionsDisplay = new PIXI.Text("How to Play:\n Use the left and right arrow keys or the 'a' and 'd' keys to rotate around the planet.\n You can fire your lasers by pressing space or the 'w' key.\n\n Goal:\n Stop the rocks from hitting the planet by destroying them with your laser.\n The number of lasers that can be on the screen at once is limited so use your shots wisely.\n You lose when enough rocks hit the planet to destroy it.", style2);
 
-var instructionsContainer = new PIXI.Container();
+var playButton;
+var instructionsButton;
+var currPlanet;
+var planetSprite;
+var explosion;
+var playerSprite1;
+var playerSprite2;
+var target;
+var planets;
+var laserTexture;
+var largeRocks;
+var smallRocks;
+var impact;
+var explosions;
+var gameOver;
+var returnHome;
+var menuMusic;
+var gameMusic;
+var explSound1;
+var explSound2;
+var explSound3;
+var laserSound;
+var currScene;
 
 //background image
 var background = new PIXI.Sprite(PIXI.Texture.fromImage("assets/spacebackground.png"));
@@ -32,44 +54,58 @@ background.position.y = renderer.height/2;
 
 stage.addChild(background);
 
-//main menu sprites
-var playButton = new PIXI.Sprite(PIXI.Texture.fromImage("assets/playButton.png"));
-var instructionsButton = new PIXI.Sprite(PIXI.Texture.fromImage("assets/instructionsButton.png"));
+//load stuff 
+PIXI.loader
+	.add("music1.mp3")
+	.add("music2.mp3")
+	.add("Explosion.mp3")
+	.add("Explosion2.mp3")
+	.add("Explosion3.mp3")
+	.add("Laser_Shoot.mp3")
+	.add("assets/assets.json")
+	.load(ready);
 
-var currPlanet;
 
-//game sprites
-var planetSprite;
-var explosion;
-var playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player1.png"));
-var playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player2.png"));
-
-//game target for tween
-var target = new PIXI.Sprite(PIXI.Texture.fromImage("assets/laser1.png"));
-
-//planet textures
-var planets = [PIXI.Texture.fromImage("assets/planet1.png"), PIXI.Texture.fromImage("assets/planet2.png"), PIXI.Texture.fromImage("assets/planet3.png"), PIXI.Texture.fromImage("assets/planet4.png"), PIXI.Texture.fromImage("assets/planet5.png")];
-
-//laser texture
-var laserTexture = new PIXI.Texture.fromImage("assets/laser2.png");
-
-//rock textures
-var largeRocks = [PIXI.Texture.fromImage("assets/largerock1.png"), PIXI.Texture.fromImage("assets/largerock2.png"), PIXI.Texture.fromImage("assets/largerock3.png")];
-var smallRocks = [PIXI.Texture.fromImage("assets/smallrock1.png"), PIXI.Texture.fromImage("assets/smallrock2.png"), PIXI.Texture.fromImage("assets/smallrock3.png"), PIXI.Texture.fromImage("assets/smallrock4.png"), PIXI.Texture.fromImage("assets/smallrock5.png")];
-
-//impact texture
-var impact = PIXI.Texture.fromImage("assets/collision.png");
-
-//explosion texture
-var explosions = [PIXI.Texture.fromImage("assets/explosion1.png"), PIXI.Texture.fromImage("assets/explosion2.png"), PIXI.Texture.fromImage("assets/explosion3.png"), PIXI.Texture.fromImage("assets/explosion4.png")];
-
-var gameOver = new PIXI.Sprite(PIXI.Texture.fromImage("assets/gameOver.png"));
-
-//return to menu sprite
-var returnHome = new PIXI.Sprite(PIXI.Texture.fromImage("assets/mainMenuButton.png"));
+	
+function ready() {
+	
+	playButton = new PIXI.Sprite(PIXI.Texture.fromFrame("playButton.png"));
+	instructionsButton = new PIXI.Sprite(PIXI.Texture.fromImage("assets/instructionsButton.png"));
+	playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player1.png"));
+	playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player2.png"));
+	target = new PIXI.Sprite(PIXI.Texture.fromImage("assets/laser1.png"));
+	planets = [PIXI.Texture.fromImage("assets/planet1.png"), PIXI.Texture.fromImage("assets/planet2.png"), PIXI.Texture.fromImage("assets/planet3.png"), PIXI.Texture.fromImage("assets/planet4.png"), PIXI.Texture.fromImage("assets/planet5.png")];
+	laserTexture = new PIXI.Texture.fromImage("assets/laser2.png");
+	largeRocks = [PIXI.Texture.fromImage("assets/largerock1.png"), PIXI.Texture.fromImage("assets/largerock2.png"), PIXI.Texture.fromImage("assets/largerock3.png")];
+	smallRocks = [PIXI.Texture.fromImage("assets/smallrock1.png"), PIXI.Texture.fromImage("assets/smallrock2.png"), PIXI.Texture.fromImage("assets/smallrock3.png"), PIXI.Texture.fromImage("assets/smallrock4.png"), PIXI.Texture.fromImage("assets/smallrock5.png")];
+	impact = PIXI.Texture.fromImage("assets/collision.png");
+	explosions = [PIXI.Texture.fromImage("assets/explosion1.png"), PIXI.Texture.fromImage("assets/explosion2.png"), PIXI.Texture.fromImage("assets/explosion3.png"), PIXI.Texture.fromImage("assets/explosion4.png")];
+	gameOver = new PIXI.Sprite(PIXI.Texture.fromImage("assets/gameOver.png"));
+	returnHome = new PIXI.Sprite(PIXI.Texture.fromImage("assets/mainMenuButton.png"));
+	
+	menuMusic = PIXI.audioManager.getAudio("music2.mp3");
+	gameMusic = PIXI.audioManager.getAudio("music1.mp3");
+	menuMusic.loop = true;
+	gameMusic.loop = true;
+	menuMusic.volume = 0.6;
+	gameMusic.volume = 0.6;
+	
+	explSound1 = PIXI.audioManager.getAudio("Explosion.mp3");
+	explSound2 = PIXI.audioManager.getAudio("Explosion2.mp3");
+	explSound3 = PIXI.audioManager.getAudio("Explosion3.mp3");
+	laserSound = PIXI.audioManager.getAudio("Laser_Shoot.mp3");
+	explSound1.volume = 0.9;
+	explSound2.volume = 0.9;
+	explSound2.volume = 0.9;
+	laserSound.volume = 0.9;
+	
+	currScene = new mainMenu();
+}
 
 //main menu
 var mainMenu = function () {
+	menuMusic.play();
+	
 	creditsDisplay.anchor.x = 0.5;
 	creditsDisplay.anchor.y = 0.5;
 	creditsDisplay.position.x = renderer.width/2;
@@ -105,6 +141,7 @@ var mainMenu = function () {
 		menuContainer.removeChildren();
 		stage.removeChild(menuContainer);
 		stage.addChild(gameContainer);
+		menuMusic.stop();
 		currScene = new playGame();
 	}
 	
@@ -165,6 +202,8 @@ var playGame = function() {
 	gameContainer.addChild(explosionContainer);
 	
 	onGame = true;
+	
+	gameMusic.play();
 }
 
 //move character while key is down
@@ -227,6 +266,7 @@ playGame.prototype.checkRocks = function() {
 				rockContainer.removeChild(rock);
 				laserContainer.removeChild(lasers[j]);
 				this.score++;
+				explSound3.play();
 				scoreDisplay.text = "Score: " + this.score;
 			}
 		}
@@ -244,6 +284,7 @@ playGame.prototype.checkRocks = function() {
 			planetSprite.anchor.y = 0.5;
 			planetSprite.position.x = renderer.width/2;
 			planetSprite.position.y = renderer.height/2;
+			explSound2.play();
 			gameContainer.addChild(planetSprite);
 			explosionContainer.addChild(explosion);
 			gameContainer.swapChildren(explosionContainer, planetSprite);
@@ -271,6 +312,7 @@ playGame.prototype.playerShoot = function() {
 		newLaser.anchor.y = 0.5;
 		newLaser.position = playerSprite1.toGlobal(gameContainer.position);
 		newLaser.rotation = playerContainer.rotation;
+		laserSound.play();
 		laserContainer.addChild(newLaser);
 		createjs.Tween.get(newLaser.position).to(target.toGlobal(gameContainer.position), 10000);
 	}
@@ -300,6 +342,7 @@ playGame.prototype.blowUpPlanet = function() {
 		explosion.position.x = renderer.width/2;
 		explosion.position.y = renderer.height/2;
 		explosionContainer.addChild(explosion);
+		explSound1.play();
 	}
 }
 
@@ -328,6 +371,7 @@ var endScreen = function() {
 	returnHome.mousedown = function(mouseData) {
 		stage.removeChild(endContainer);
 		stage.addChild(menuContainer);
+		gameMusic.stop();
 		currScene = new mainMenu();
 	}
 }
@@ -420,7 +464,6 @@ function animate() {
 	renderer.render(stage);
 }
 
-var currScene = new mainMenu();
 animate();
 
 document.addEventListener('keydown', keydownEventHandler);

@@ -1,0 +1,246 @@
+{"frames": {
+
+"player2.png":
+{
+	"frame": {"x":0,"y":0,"w":46,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":11},
+	"sourceSize": {"w":46,"h":11},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"laser1.png":
+{
+	"frame": {"x":46,"y":0,"w":4,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":21},
+	"sourceSize": {"w":4,"h":21},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"laser2.png":
+{
+	"frame": {"x":50,"y":0,"w":32,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":21},
+	"sourceSize": {"w":32,"h":21},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"smallrock5.png":
+{
+	"frame": {"x":82,"y":0,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"smallrock1.png":
+{
+	"frame": {"x":106,"y":0,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"smallrock2.png":
+{
+	"frame": {"x":130,"y":0,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"smallrock4.png":
+{
+	"frame": {"x":154,"y":0,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"smallrock3.png":
+{
+	"frame": {"x":178,"y":0,"w":21,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":24},
+	"sourceSize": {"w":21,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"mainMenuButton.png":
+{
+	"frame": {"x":199,"y":0,"w":200,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":35},
+	"sourceSize": {"w":200,"h":35},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"playButton.png":
+{
+	"frame": {"x":399,"y":0,"w":200,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":35},
+	"sourceSize": {"w":200,"h":35},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"instructionsButton.png":
+{
+	"frame": {"x":599,"y":0,"w":200,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":35},
+	"sourceSize": {"w":200,"h":35},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"player1.png":
+{
+	"frame": {"x":799,"y":0,"w":46,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":36},
+	"sourceSize": {"w":46,"h":36},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"largerock1.png":
+{
+	"frame": {"x":845,"y":0,"w":48,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":43},
+	"sourceSize": {"w":48,"h":43},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"largerock2.png":
+{
+	"frame": {"x":893,"y":0,"w":45,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":44},
+	"sourceSize": {"w":45,"h":44},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"largerock3.png":
+{
+	"frame": {"x":938,"y":0,"w":48,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":46},
+	"sourceSize": {"w":48,"h":46},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"collision.png":
+{
+	"frame": {"x":986,"y":0,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":48},
+	"sourceSize": {"w":48,"h":48},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gameOver.png":
+{
+	"frame": {"x":1034,"y":0,"w":502,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":502,"h":58},
+	"sourceSize": {"w":502,"h":58},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"explosion3.png":
+{
+	"frame": {"x":0,"y":58,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"explosion2.png":
+{
+	"frame": {"x":128,"y":58,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"explosion1.png":
+{
+	"frame": {"x":256,"y":58,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"explosion4.png":
+{
+	"frame": {"x":384,"y":58,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet4.png":
+{
+	"frame": {"x":512,"y":58,"w":144,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
+	"sourceSize": {"w":144,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet3.png":
+{
+	"frame": {"x":656,"y":58,"w":144,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
+	"sourceSize": {"w":144,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet5.png":
+{
+	"frame": {"x":800,"y":58,"w":144,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
+	"sourceSize": {"w":144,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet1.png":
+{
+	"frame": {"x":944,"y":58,"w":144,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
+	"sourceSize": {"w":144,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet2.png":
+{
+	"frame": {"x":1088,"y":58,"w":144,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
+	"sourceSize": {"w":144,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "assets.png",
+	"format": "RGBA8888",
+	"size": {"w":1536,"h":202},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:135bb574666524ea46b767b7f158d325:b6ce5bac957a5af2fa263d90e18a5bfd:a759b6bbc8381ac9c472b28f589ad0d6$"
+}
+}
