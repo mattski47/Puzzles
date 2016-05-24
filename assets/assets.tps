@@ -214,6 +214,8 @@
             <key type="filename">smallrock3.png</key>
             <key type="filename">smallrock4.png</key>
             <key type="filename">smallrock5.png</key>
+            <key type="filename">spacebackground.png</key>
+            <key type="filename">title.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

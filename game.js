@@ -35,6 +35,8 @@ var impact;
 var explosions;
 var gameOver;
 var returnHome;
+var title;
+
 var menuMusic;
 var gameMusic;
 var explSound1;
@@ -64,24 +66,24 @@ PIXI.loader
 	.add("Laser_Shoot.mp3")
 	.add("assets/assets.json")
 	.load(ready);
-
-
 	
 function ready() {
 	
 	playButton = new PIXI.Sprite(PIXI.Texture.fromFrame("playButton.png"));
-	instructionsButton = new PIXI.Sprite(PIXI.Texture.fromImage("assets/instructionsButton.png"));
-	playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player1.png"));
-	playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/player2.png"));
-	target = new PIXI.Sprite(PIXI.Texture.fromImage("assets/laser1.png"));
-	planets = [PIXI.Texture.fromImage("assets/planet1.png"), PIXI.Texture.fromImage("assets/planet2.png"), PIXI.Texture.fromImage("assets/planet3.png"), PIXI.Texture.fromImage("assets/planet4.png"), PIXI.Texture.fromImage("assets/planet5.png")];
-	laserTexture = new PIXI.Texture.fromImage("assets/laser2.png");
-	largeRocks = [PIXI.Texture.fromImage("assets/largerock1.png"), PIXI.Texture.fromImage("assets/largerock2.png"), PIXI.Texture.fromImage("assets/largerock3.png")];
-	smallRocks = [PIXI.Texture.fromImage("assets/smallrock1.png"), PIXI.Texture.fromImage("assets/smallrock2.png"), PIXI.Texture.fromImage("assets/smallrock3.png"), PIXI.Texture.fromImage("assets/smallrock4.png"), PIXI.Texture.fromImage("assets/smallrock5.png")];
-	impact = PIXI.Texture.fromImage("assets/collision.png");
-	explosions = [PIXI.Texture.fromImage("assets/explosion1.png"), PIXI.Texture.fromImage("assets/explosion2.png"), PIXI.Texture.fromImage("assets/explosion3.png"), PIXI.Texture.fromImage("assets/explosion4.png")];
-	gameOver = new PIXI.Sprite(PIXI.Texture.fromImage("assets/gameOver.png"));
-	returnHome = new PIXI.Sprite(PIXI.Texture.fromImage("assets/mainMenuButton.png"));
+	instructionsButton = new PIXI.Sprite(PIXI.Texture.fromFrame("instructionsButton.png"));
+	playerSprite1 = new PIXI.Sprite(PIXI.Texture.fromFrame("player1.png"));
+	playerSprite2 = new PIXI.Sprite(PIXI.Texture.fromFrame("player2.png"));
+	target = new PIXI.Sprite(PIXI.Texture.fromFrame("laser1.png"));
+	planets = [PIXI.Texture.fromFrame("planet1.png"), PIXI.Texture.fromFrame("planet2.png"), PIXI.Texture.fromFrame("planet3.png"), PIXI.Texture.fromFrame("planet4.png"), PIXI.Texture.fromFrame("planet5.png")];
+	laserTexture = PIXI.Texture.fromFrame("laser2.png");
+	largeRocks = [PIXI.Texture.fromFrame("largerock1.png"), PIXI.Texture.fromFrame("largerock2.png"), PIXI.Texture.fromFrame("largerock3.png")];
+	smallRocks = [PIXI.Texture.fromFrame("smallrock1.png"), PIXI.Texture.fromFrame("smallrock2.png"), PIXI.Texture.fromFrame("smallrock3.png"), PIXI.Texture.fromFrame("smallrock4.png"), PIXI.Texture.fromFrame("smallrock5.png")];
+	impact = PIXI.Texture.fromFrame("collision.png");
+	explosions = [PIXI.Texture.fromFrame("explosion1.png"), PIXI.Texture.fromFrame("explosion2.png"), PIXI.Texture.fromFrame("explosion3.png"), PIXI.Texture.fromFrame("explosion4.png")];
+	gameOver = new PIXI.Sprite(PIXI.Texture.fromFrame("gameOver.png"));
+	returnHome = new PIXI.Sprite(PIXI.Texture.fromFrame("mainMenuButton.png"));
+	background = new PIXI.Sprite(PIXI.Texture.fromFrame("spacebackground.png"));
+	title = new PIXI.Sprite(PIXI.Texture.fromFrame("title.png"));
 	
 	menuMusic = PIXI.audioManager.getAudio("music2.mp3");
 	gameMusic = PIXI.audioManager.getAudio("music1.mp3");
@@ -111,6 +113,11 @@ var mainMenu = function () {
 	creditsDisplay.position.x = renderer.width/2;
 	creditsDisplay.position.y = renderer.height-25;
 	
+	title.anchor.x = 0.5;
+	title.anchor.y = 0.5;
+	title.position.x = renderer.width/2;
+	title.position.y = 130;
+	
 	//place play button
 	playButton.anchor.x = 0.5;
 	playButton.anchor.y = 0.5;
@@ -127,6 +134,7 @@ var mainMenu = function () {
 	playerSprite1.position.x = renderer.width/2;
 	playerSprite1.position.y = renderer.height/2+230;
 	
+	menuContainer.addChild(title);
 	menuContainer.addChild(playButton);
 	menuContainer.addChild(instructionsButton);
 	menuContainer.addChild(creditsDisplay);
